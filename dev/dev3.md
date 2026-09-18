@@ -258,10 +258,7 @@ When the user selects an image:
 * Show the filename.
 * Provide a remove image option.
 * Keep the preview inside the form card.
-
-Do not upload the image to a server.
-
-The image only needs to be previewed in the browser.
+* The image should be saved to the `assets/images/uploads/` folder.
 
 ---
 
@@ -333,15 +330,7 @@ const issueId = `FM-${new Date().getFullYear()}-${Math.floor(100 + Math.random()
 
 This is only a demo reference number.
 
-Do NOT save the report using:
-
-```text
-localStorage
-sessionStorage
-```
-
-Do NOT send it to a backend.
-
+You MUST save the report by sending it to a backend API which will save it to the JSON file and the `assetsfolder`.
 ---
 
 # 10. Success Message
