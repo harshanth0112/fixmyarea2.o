@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Issue Details - FixMyArea</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white">
+
+    <nav class="bg-slate-800 border-b border-slate-700">
+
+        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between">
+
+            <a href="index.html"
+               class="text-2xl font-bold text-teal-400">
+                FixMyArea
+            </a>
+
+            <div class="flex gap-6">
+                <a href="index.html">Home</a>
+                <a href="issues.html">Issues</a>
+                <a href="about.html">About</a>
+                <a href="report.html">Report Issue</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-5 py-10">
+
+        <a
+            href="issues.html"
+            class="text-teal-400 inline-block mb-8">
+            ← Back to Issues
+        </a>
+
+        <div id="detailsContainer"></div>
+
+        <div
+            id="notFound"
+            class="hidden bg-slate-800 rounded-xl p-10 text-center">
+
+            <h1 class="text-3xl font-bold mb-3">
+                Issue Not Found
+            </h1>
+
+            <p class="text-slate-400 mb-5">
+                The issue ID is invalid.
+            </p>
+
+            <a
+                href="issues.html"
+                class="inline-block bg-teal-500 px-5 py-3 rounded-lg">
+                Browse Issues
+            </a>
+
+        </div>
+
+    </main>
+
+    <script src="js/details.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues - FixMyArea</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white">
+
+    <nav class="bg-slate-800 border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-teal-400">
+                FixMyArea
+            </a>
+
+            <div class="flex gap-6">
+                <a href="index.html" class="hover:text-teal-400">Home</a>
+                <a href="issues.html" class="text-teal-400">Issues</a>
+                <a href="about.html" class="hover:text-teal-400">About</a>
+                <a href="report.html" class="hover:text-teal-400">Report Issue</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-5 py-10">
+
+        <h1 id="pageTitle" class="text-4xl font-bold mb-3">
+            Community Issues
+        </h1>
+
+        <p class="text-slate-400 mb-8">
+            Browse problems reported by the community.
+        </p>
+
+        <div class="bg-slate-800 p-5 rounded-xl mb-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search issues..."
+                    class="bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 outline-none"
+                >
+
+                <select
+                    id="categoryFilter"
+                    class="bg-slate-700 border border-slate-600 rounded-lg px-4 py-3"
+                >
+                    <option value="">All Categories</option>
+                    <option value="Road Damage">Road Damage</option>
+                    <option value="Garbage and Waste">Garbage and Waste</option>
+                    <option value="Broken Streetlight">Broken Streetlight</option>
+                    <option value="Water Leakage">Water Leakage</option>
+                    <option value="Drainage Problem">Drainage Problem</option>
+                    <option value="Traffic Issue">Traffic Issue</option>
+                    <option value="Public Space">Public Space</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <select
+                    id="statusFilter"
+                    class="bg-slate-700 border border-slate-600 rounded-lg px-4 py-3"
+                >
+                    <option value="">All Status</option>
+                    <option value="Reported">Reported</option>
+                    <option value="Under Review">Under Review</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <select
+                    id="locationFilter"
+                    class="bg-slate-700 border border-slate-600 rounded-lg px-4 py-3"
+                >
+                    <option value="">All Locations</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Trichy">Trichy</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Madurai">Madurai</option>
+                </select>
+
+            </div>
+
+            <button
+                id="clearButton"
+                class="mt-4 bg-teal-500 hover:bg-teal-600 px-5 py-2 rounded-lg"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+        <p id="issueCount" class="text-slate-400 mb-5"></p>
+
+        <div
+            id="issuesContainer"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+
+        <div
+            id="emptyState"
+            class="hidden text-center bg-slate-800 rounded-xl p-10"
+        >
+            <h2 class="text-2xl font-bold mb-2">
+                No Issues Found
+            </h2>
+
+            <p class="text-slate-400">
+                Try changing your search or filters.
+            </p>
+        </div>
+
+    </main>
+
+    <script src="js/issues.js"></script>
+
+</body>
+</html>
