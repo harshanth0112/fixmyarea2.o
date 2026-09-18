@@ -119,42 +119,19 @@ Reuse the same navbar and footer design created by Developer 1.
 
 # 5. Shared Issue Data
 
-Use one simple static JavaScript array.
+Fetch the issues dynamically from the backend API which reads from the JSON file.
 
 Example:
 
 ```javascript
-const issues = [
-    {
-        id: "FM001",
-        title: "Large pothole near the main road",
-        category: "Road Damage",
-        location: "Srirangam, Trichy",
-        city: "Trichy",
-        area: "Srirangam",
-        description: "A large pothole is causing difficulties for commuters.",
-        image: "assets/images/pothole.jpg",
-        status: "In Progress",
-        date: "2026-09-18",
-        upvotes: 12
-    },
-    {
-        id: "FM002",
-        title: "Garbage accumulation near bus stop",
-        category: "Garbage and Waste",
-        location: "Sholinganallur, Chennai",
-        city: "Chennai",
-        area: "Sholinganallur",
-        description: "Garbage has accumulated near the public bus stop.",
-        image: "assets/images/garbage.jpg",
-        status: "Reported",
-        date: "2026-09-16",
-        upvotes: 8
-    }
-];
+async function fetchIssues() {
+    const response = await fetch('/api/issues');
+    const issues = await response.json();
+    return issues;
+}
 ```
 
-Create approximately **6–8 sample issues** covering different categories and locations.
+Ensure your code handles the data structure provided by the backend API.
 
 Keep the data structure consistent.
 

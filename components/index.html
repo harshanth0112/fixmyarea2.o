@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMyArea - Report local problems</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans flex flex-col min-h-screen transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-teal-500 text-2xl"></i>
+                        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
+                        <span class="hidden md:block text-xs text-slate-500 dark:text-slate-400 ml-2 mt-1">Make your area better.</span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Issues</a>
+                    <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Report Issue</a>
+                    <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                    <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm ml-2">Login</a>
+                    
+                    <!-- Theme Toggle Desktop -->
+                    <button id="theme-toggle" class="p-2 ml-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+                        <i id="theme-toggle-icon" class="fa-solid fa-sun text-lg"></i>
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden gap-2">
+                    <!-- Theme Toggle Mobile (Visible on mobile next to hamburger) -->
+                    <button id="mobile-theme-toggle-inline" class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+                        <i id="mobile-theme-toggle-icon-inline" class="fa-solid fa-sun text-lg"></i>
+                    </button>
+                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+                <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Browse Issues</a>
+                <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Report Issue</a>
+                <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
+                <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4 text-center transition-colors">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
+                    <span class="block">See the Problem.</span>
+                    <span class="block text-teal-500 dark:text-teal-400">Report the Issue.</span>
+                    <span class="block">Improve Your Area.</span>
+                </h1>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600 dark:text-slate-300 mb-10">
+                    FixMyArea helps citizens report local problems, track issue progress, and contribute to cleaner, safer, and better communities.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:-translate-y-1 text-lg">Report an Issue</a>
+                    <a href="issues.html" class="bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:-translate-y-1 text-lg">Browse Issues</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 bg-slate-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">What Can You Report?</h2>
+                    <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">Help us identify the most pressing issues in your neighborhood.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Garbage and Waste</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report overflowing bins and uncollected waste in public areas.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-solid fa-road-barrier"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Road Damage</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report potholes, broken roads, and unsafe streets causing commuter issues.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-regular fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Broken Streetlights</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report streetlights that need repair to ensure neighborhood safety.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Water Leakage</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report leaking public pipes, broken mains, and water wastage.</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Drainage Problems</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report blocked drains, overflowing sewers, and flooding issues.</p>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-6 border border-slate-200 dark:border-slate-600 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-4 text-teal-600 dark:text-teal-400 text-2xl transition-colors">
+                            <i class="fa-solid fa-tree-city"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Public Space Issues</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Report problems in parks, damaged sidewalks, and other public areas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">How FixMyArea Works</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <!-- Line connecting steps (desktop only) -->
+                    <div class="hidden md:block absolute top-8 left-1/6 right-1/6 h-0.5 bg-slate-200 dark:bg-slate-700 z-0 transition-colors duration-300"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 mx-auto bg-teal-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg border-4 border-white dark:border-slate-900 mb-6 transition-colors duration-300">1</div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Identify the Problem</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Find an issue in your neighbourhood that needs attention.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 mx-auto bg-teal-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg border-4 border-white dark:border-slate-900 mb-6 transition-colors duration-300">2</div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Report the Issue</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Submit the issue with its category, location, and description.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-16 h-16 mx-auto bg-teal-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg border-4 border-white dark:border-slate-900 mb-6 transition-colors duration-300">3</div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Track the Progress</h3>
+                        <p class="text-slate-600 dark:text-slate-300">Browse reported issues and view their current status as they get resolved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="py-12 bg-slate-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 mb-1">120+</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-medium">Reported Issues</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 mb-1">68</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-medium">Issues Resolved</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 mb-1">35</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-medium">Active Areas</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-teal-600 dark:text-teal-400 mb-1">95%</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-300 font-medium">Community Participation</div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-xs text-slate-500 italic">*These are demonstration values for the FixMyArea platform prototype.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 text-center">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Your Voice Can Make a Difference</h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 mb-8">A better neighbourhood starts with one reported problem.</p>
+                <a href="login.html" class="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg transition-transform hover:-translate-y-1 text-lg">Report a Local Issue</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 dark:bg-slate-950 pt-12 pb-8 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-map-location-dot text-teal-500 text-xl"></i>
+                        <span class="font-bold text-lg text-slate-900 dark:text-white">FixMyArea</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">
+                        FixMyArea helps communities identify and report local problems through a simple digital platform.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
+                        <li><a href="issues.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Browse Issues</a></li>
+                        <li><a href="report.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Report Issue</a></li>
+                        <li><a href="about.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Placeholder -->
+                <div>
+                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li><i class="fa-solid fa-envelope mr-2 text-slate-500"></i> contact@fixmyarea.com</li>
+                        <li><i class="fa-solid fa-phone mr-2 text-slate-500"></i> +91 (123) 456-7890</li>
+                        <li><i class="fa-solid fa-location-dot mr-2 text-slate-500"></i> Chennai, Tamil Nadu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center transition-colors duration-300">
+                <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                    &copy; <span id="current-year"></span> FixMyArea. All rights reserved.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

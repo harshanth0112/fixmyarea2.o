@@ -22,7 +22,7 @@ FixMyArea provides a basic interface where users can:
 - View detailed information about an issue.
 - Learn about the project and team.
 
-> **MVP limitation:** This version is frontend-only. Login, location selection, and issue submission are simulated. There is no real authentication, backend, database, GPS tracking, or government-authority integration.
+> **MVP limitation:** Login and location selection are simulated. There is no real authentication, GPS tracking, or government-authority integration. Reports are saved to a JSON file via backend API.
 
 ---
 
@@ -115,8 +115,7 @@ FixMyArea/
 ### Project restrictions
 
 - No React, Vue, Angular, or other frontend frameworks.
-- No backend for the initial MVP.
-- No database.
+- A backend API will be used to write data to a JSON file and save images.
 - No real authentication.
 - No real GPS or map integration.
 - No external JavaScript frameworks.
