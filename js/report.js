@@ -785,11 +785,6 @@ function setupMobileMenu() {
   );
 }
 
-
-// ============================================
-// EVENT LISTENERS
-// ============================================
-
 reportForm.addEventListener(
   "submit",
   function (event) {
@@ -818,11 +813,6 @@ reportAnotherButton.addEventListener(
   "click",
   reportAnotherIssue
 );
-
-
-// ============================================
-// INITIALIZE PAGE
-// ============================================
 
 setupLiveValidation();
 
