@@ -20,35 +20,37 @@
 
     <!-- Navbar -->
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-2xl"></i>
-                        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
-                        <span class="hidden md:block text-xs text-slate-500 dark:text-slate-400 ml-2 mt-1">Make your area better.</span>
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between gap-4 whitespace-nowrap">
+                <div class="flex min-w-0 items-center gap-2">
+                    <a href="../index.html" class="flex shrink-0 items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-2xl text-teal-500"></i>
+                        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
                     </a>
+                    <span class="hidden text-xs text-slate-500 dark:text-slate-400 md:inline">Make your area better.</span>
                 </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Issues</a>
-                    <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Report Issue</a>
-                    <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                    <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm ml-2">Login</a>
-                    
-                    <!-- Theme Toggle Desktop -->
-                    <button id="theme-toggle" class="p-2 ml-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="hidden flex-1 items-center justify-center md:flex md:gap-6 lg:gap-8">
+                    <a href="../index.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Home</a>
+                    <a href="issues.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Browse Issues</a>
+                    <a href="report.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Report Issue</a>
+                    <a href="about.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">About</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="theme-toggle-icon" class="fa-solid fa-sun text-lg"></i>
                     </button>
+                    <div id="auth-control" class="flex items-center">
+                        <a id="login-button" href="login.html" class="inline-flex h-10 items-center justify-center rounded-md bg-teal-500 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500">Login</a>
+                    </div>
                 </div>
-                <!-- Mobile menu button -->
-                <div class="flex items-center md:hidden gap-2">
-                    <!-- Theme Toggle Mobile (Visible on mobile next to hamburger) -->
-                    <button id="mobile-theme-toggle-inline" class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="mobile-theme-toggle-inline" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="mobile-theme-toggle-icon-inline" class="fa-solid fa-sun text-lg"></i>
                     </button>
-                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                     </button>
@@ -56,14 +58,15 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
-                <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Browse Issues</a>
-                <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Report Issue</a>
-                <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
-                <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4 text-center transition-colors">Login</a>
+        <div class="hidden border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 md:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <a href="../index.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Home</a>
+                <a href="issues.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Browse Issues</a>
+                <a href="report.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Report Issue</a>
+                <a href="about.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">About</a>
+                <div id="mobile-auth-control" class="pt-2">
+                    <a id="mobile-login-button" href="login.html" class="block rounded-md bg-teal-500 px-3 py-2 text-center text-base font-medium text-white transition-colors hover:bg-teal-600">Login</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -237,101 +240,7 @@
         </section>
 
 
-        <section class="bg-white dark:bg-slate-800 rounded-xl p-8 mb-8">
-
-            <h2 class="text-3xl font-bold mb-6">
-                Technology
-            </h2>
-
-            <div class="flex flex-wrap gap-4">
-
-                <span class="bg-slate-100 dark:bg-slate-700 px-5 py-3 rounded-lg">
-                    HTML5
-                </span>
-
-                <span class="bg-slate-100 dark:bg-slate-700 px-5 py-3 rounded-lg">
-                    Tailwind CSS
-                </span>
-
-                <span class="bg-slate-100 dark:bg-slate-700 px-5 py-3 rounded-lg">
-                    JavaScript
-                </span>
-
-                <span class="bg-slate-100 dark:bg-slate-700 px-5 py-3 rounded-lg">
-                    GitHub
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <section class="bg-white dark:bg-slate-800 rounded-xl p-8 mb-8">
-
-            <h2 class="text-3xl font-bold mb-6">
-                Team
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-
-                <div class="bg-slate-100 dark:bg-slate-700 p-6 rounded-xl text-center">
-                    <h3 class="font-bold text-xl">
-                        Developer 1
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-400">
-                        Home & Dashboard
-                    </p>
-                </div>
-
-                <div class="bg-slate-100 dark:bg-slate-700 p-6 rounded-xl text-center">
-                    <h3 class="font-bold text-xl">
-                        Developer 2
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-400">
-                        Authentication
-                    </p>
-                </div>
-
-                <div class="bg-slate-100 dark:bg-slate-700 p-6 rounded-xl text-center">
-                    <h3 class="font-bold text-xl">
-                        Developer 3
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-400">
-                        Issue Reporting
-                    </p>
-                </div>
-
-                <div class="bg-slate-100 dark:bg-slate-700 p-6 rounded-xl text-center">
-                    <h3 class="font-bold text-xl">
-                        Developer 4
-                    </h3>
-                    <p class="text-slate-600 dark:text-slate-400">
-                        Issues & Details
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section class="bg-white dark:bg-slate-800 rounded-xl p-8">
-
-            <h2 class="text-3xl font-bold mb-5">
-                Limitations
-            </h2>
-
-            <ul class="space-y-3 text-slate-700 dark:text-slate-300">
-
-                <li>✓ Frontend-only MVP</li>
-                <li>✓ Demo issue data</li>
-                <li>✓ No real authentication</li>
-                <li>✓ No backend database</li>
-                <li>✓ No real government integration</li>
-
-            </ul>
-
-        </section>
+        
 
     </main>
 
@@ -354,7 +263,7 @@
                 <div>
                     <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
+                        <li><a href="../index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
                         <li><a href="issues.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Browse Issues</a></li>
                         <li><a href="report.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Report Issue</a></li>
                         <li><a href="about.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About Us</a></li>

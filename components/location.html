@@ -3,54 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Location - FixMyArea</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Location - FixMyArea</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' };
     </script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <!-- Location JS -->
-    <script src="../js/location.js"></script>
+    <script src="../js/main.js" defer></script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans flex flex-col min-h-screen transition-colors duration-300">
-
-    <!-- Navbar -->
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 min-h-screen transition-colors duration-300">
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-2xl"></i>
-                        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
-                        <span class="hidden md:block text-xs text-slate-500 dark:text-slate-400 ml-2 mt-1">Make your area better.</span>
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between gap-4 whitespace-nowrap">
+                <div class="flex min-w-0 items-center gap-2">
+                    <a href="../index.html" class="flex shrink-0 items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-2xl text-teal-500"></i>
+                        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
                     </a>
+                    <span class="hidden text-xs text-slate-500 dark:text-slate-400 md:inline">Make your area better.</span>
                 </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Issues</a>
-                    <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Report Issue</a>
-                    <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                    <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm ml-2">Login</a>
-                    
-                    <!-- Theme Toggle Desktop -->
-                    <button id="theme-toggle" class="p-2 ml-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="hidden flex-1 items-center justify-center md:flex md:gap-6 lg:gap-8">
+                    <a href="../index.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Home</a>
+                    <a href="issues.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Browse Issues</a>
+                    <a href="report.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Report Issue</a>
+                    <a href="about.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">About</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="theme-toggle-icon" class="fa-solid fa-sun text-lg"></i>
                     </button>
+                    <div id="auth-control" class="flex items-center">
+                        <a id="login-button" href="login.html" class="inline-flex h-10 items-center justify-center rounded-md bg-teal-500 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500">Login</a>
+                    </div>
                 </div>
-                <!-- Mobile menu button -->
-                <div class="flex items-center md:hidden gap-2">
-                    <!-- Theme Toggle Mobile (Visible on mobile next to hamburger) -->
-                    <button id="mobile-theme-toggle-inline" class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="mobile-theme-toggle-inline" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="mobile-theme-toggle-icon-inline" class="fa-solid fa-sun text-lg"></i>
                     </button>
-                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                     </button>
@@ -58,230 +52,37 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
-                <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Browse Issues</a>
-                <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Report Issue</a>
-                <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
-                <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4 text-center transition-colors">Login</a>
+        <div class="hidden border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 md:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <a href="../index.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Home</a>
+                <a href="issues.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Browse Issues</a>
+                <a href="report.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Report Issue</a>
+                <a href="about.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">About</a>
+                <div id="mobile-auth-control" class="pt-2">
+                    <a id="mobile-login-button" href="login.html" class="block rounded-md bg-teal-500 px-3 py-2 text-center text-base font-medium text-white transition-colors hover:bg-teal-600">Login</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="px-4 py-10 sm:py-16">
-
-        <section class="mx-auto max-w-2xl text-center">
-
-            <div class="mb-5">
-                <img src="https://www.gstatic.com/images/branding/product/2x/maps_96dp.png"
-                     alt="FixMyArea location"
-                     class="mx-auto h-28 w-28">
+    <main class="max-w-4xl mx-auto px-4 py-20 text-center">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg p-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-2xl mb-6">
+                <i class="fa-solid fa-check"></i>
             </div>
-
-            <h1 class="text-3xl font-bold sm:text-4xl">
-                Select Your Location
-            </h1>
-
-            <p class="mt-3 text-slate-600 dark:text-slate-400">
-                Choose your area to see relevant local issues
-                and report problems in your area.
+            <h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Login Successful</h1>
+            <p class="text-slate-600 dark:text-slate-300 text-lg mb-8">
+                You have reached the demo location confirmation page for FixMyArea.
             </p>
-
-
-            <!-- Location Card -->
-            <div class="mt-8 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 text-left shadow-xl sm:p-8">
-
-                <form id="locationForm">
-
-                    <!-- City -->
-                    <div class="mb-6">
-
-                        <label for="city"
-                               class="mb-2 block font-medium">
-                            City
-                            <span class="text-red-500">*</span>
-                        </label>
-
-                        <select
-                            id="city"
-                            name="city"
-                            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-                        >
-                            <option value="">
-                                Select City
-                            </option>
-
-                            <option value="Chennai">
-                                Chennai
-                            </option>
-
-                            <option value="Trichy">
-                                Trichy
-                            </option>
-
-                            <option value="Coimbatore">
-                                Coimbatore
-                            </option>
-
-                            <option value="Madurai">
-                                Madurai
-                            </option>
-                        </select>
-
-                    </div>
-
-
-                    <!-- Area -->
-                    <div class="mb-6">
-
-                        <label for="area"
-                               class="mb-2 block font-medium">
-                            Area
-                            <span class="text-red-500">*</span>
-                        </label>
-
-                        <select
-                            id="area"
-                            name="area"
-                            disabled
-                            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-white outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 disabled:cursor-not-allowed disabled:opacity-60"
-                        >
-                            <option value="">
-                                Select Area
-                            </option>
-                        </select>
-
-                    </div>
-
-
-                    <!-- Error -->
-                    <div id="locationError"
-                         class="mb-6 hidden rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-500"
-                         role="alert">
-                        Please select your city and area.
-                    </div>
-
-
-                    <!-- Selected Location Preview -->
-                    <div id="locationPreview"
-                         class="mb-6 hidden rounded-xl border border-civic-primary/30 bg-white dark:bg-slate-800 p-5">
-
-                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                            Your Selected Area
-                        </p>
-
-                        <div class="mt-3 flex items-center gap-3">
-
-                            <span class="text-2xl">
-                                📍
-                            </span>
-
-                            <div>
-                                <p id="selectedArea"
-                                   class="font-semibold text-slate-900 dark:text-white">
-                                </p>
-
-                                <p id="selectedCity"
-                                   class="text-sm text-slate-600 dark:text-slate-400">
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Continue -->
-                    <button
-                        id="continueButton"
-                        type="submit"
-                        class="w-full rounded-lg bg-teal-500 px-5 py-3 font-semibold text-white transition hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    >
-                        Continue to Issues →
-                    </button>
-
-                </form>
-
-            </div>
-
-
-            <!-- Information Card -->
-            <div class="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 text-left">
-
-                <div class="flex gap-3">
-
-                    <span class="text-2xl">
-                        💡
-                    </span>
-
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
-                        Select your location to explore issues reported
-                        in your local area and discover problems that
-                        need attention.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-100 dark:bg-slate-950 pt-12 pb-8 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Brand Info -->
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-xl"></i>
-                        <span class="font-bold text-lg text-slate-900 dark:text-white">FixMyArea</span>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">
-                        FixMyArea helps communities identify and report local problems through a simple digital platform.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
-                        <li><a href="issues.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Browse Issues</a></li>
-                        <li><a href="report.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Report Issue</a></li>
-                        <li><a href="about.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About Us</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Placeholder -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                        <li><i class="fa-solid fa-envelope mr-2 text-slate-500"></i> contact@fixmyarea.com</li>
-                        <li><i class="fa-solid fa-phone mr-2 text-slate-500"></i> +91 (123) 456-7890</li>
-                        <li><i class="fa-solid fa-location-dot mr-2 text-slate-500"></i> Chennai, Tamil Nadu</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center transition-colors duration-300">
-                <p class="text-slate-500 text-sm mb-4 md:mb-0">
-                    &copy; <span id="current-year"></span> FixMyArea. All rights reserved.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                </div>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="../index.html" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                    Back to Home
+                </a>
+                <a href="login.html" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-slate-100 font-semibold py-3 px-6 rounded-lg transition-colors">
+                    Sign in Again
+                </a>
             </div>
         </div>
-    </footer>
-
-    <!-- Custom JS -->
-    <script src="../js/main.js"></script>
+    </main>
 </body>
 </html>

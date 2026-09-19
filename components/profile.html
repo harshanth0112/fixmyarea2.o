@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issue Details - FixMyArea</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Profile - FixMyArea</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' };
     </script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <!-- Page JS -->
-    <script src="../js/details.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/profile.js" defer></script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans flex flex-col min-h-screen transition-colors duration-300">
-
-    <!-- Navbar -->
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans min-h-screen transition-colors duration-300">
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
         <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between gap-4 whitespace-nowrap">
@@ -62,7 +55,7 @@
 
         <div class="hidden border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                <a href="../index.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Home</a>
+                <a href="index.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Home</a>
                 <a href="issues.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Browse Issues</a>
                 <a href="report.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Report Issue</a>
                 <a href="about.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">About</a>
@@ -73,90 +66,15 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-5 py-10">
-
-        <a
-            href="issues.html"
-            class="text-teal-600 dark:text-teal-400 inline-block mb-8">
-            ← Back to Issues
-        </a>
-
-        <div id="detailsContainer"></div>
-
-        <div
-            id="notFound"
-            class="hidden bg-white dark:bg-slate-800 rounded-xl p-10 text-center">
-
-            <h1 class="text-3xl font-bold mb-3">
-                Issue Not Found
-            </h1>
-
-            <p class="text-slate-600 dark:text-slate-400 mb-5">
-                The issue ID is invalid.
-            </p>
-
-            <a
-                href="issues.html"
-                class="inline-block bg-teal-500 px-5 py-3 rounded-lg">
-                Browse Issues
-            </a>
-
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="hidden">
+            <div id="profile-file-status" class="text-sm text-slate-500 dark:text-slate-400">No users.json selected yet.</div>
+            <div id="profile-unsupported-message" class="mt-3 hidden rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+                This browser does not support the File System Access API.
+            </div>
         </div>
 
+        <div id="profile-container" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg p-6 sm:p-8"></div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-100 dark:bg-slate-950 pt-12 pb-8 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Brand Info -->
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-xl"></i>
-                        <span class="font-bold text-lg text-slate-900 dark:text-white">FixMyArea</span>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">
-                        FixMyArea helps communities identify and report local problems through a simple digital platform.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="../index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
-                        <li><a href="issues.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Browse Issues</a></li>
-                        <li><a href="report.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Report Issue</a></li>
-                        <li><a href="about.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About Us</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Placeholder -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                        <li><i class="fa-solid fa-envelope mr-2 text-slate-500"></i> contact@fixmyarea.com</li>
-                        <li><i class="fa-solid fa-phone mr-2 text-slate-500"></i> +91 (123) 456-7890</li>
-                        <li><i class="fa-solid fa-location-dot mr-2 text-slate-500"></i> Chennai, Tamil Nadu</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center transition-colors duration-300">
-                <p class="text-slate-500 text-sm mb-4 md:mb-0">
-                    &copy; <span id="current-year"></span> FixMyArea. All rights reserved.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom JS -->
-    <script src="../js/main.js"></script>
 </body>
 </html>

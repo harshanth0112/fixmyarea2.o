@@ -4,53 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - FixMyArea</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' };
     </script>
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <!-- Login JS -->
     <script src="../js/login.js" defer></script>
+    <script src="../js/main.js" defer></script>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans flex flex-col min-h-screen transition-colors duration-300">
-
-    <!-- Navbar -->
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-sans min-h-screen transition-colors duration-300">
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-2xl"></i>
-                        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
-                        <span class="hidden md:block text-xs text-slate-500 dark:text-slate-400 ml-2 mt-1">Make your area better.</span>
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between gap-4 whitespace-nowrap">
+                <div class="flex min-w-0 items-center gap-2">
+                    <a href="../index.html" class="flex shrink-0 items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-2xl text-teal-500"></i>
+                        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">FixMyArea</span>
                     </a>
+                    <span class="hidden text-xs text-slate-500 dark:text-slate-400 md:inline">Make your area better.</span>
                 </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Browse Issues</a>
-                    <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Report Issue</a>
-                    <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                    <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm ml-2">Login</a>
-                    
-                    <!-- Theme Toggle Desktop -->
-                    <button id="theme-toggle" class="p-2 ml-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="hidden flex-1 items-center justify-center md:flex md:gap-6 lg:gap-8">
+                    <a href="../index.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Home</a>
+                    <a href="issues.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Browse Issues</a>
+                    <a href="report.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">Report Issue</a>
+                    <a href="about.html" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-teal-600 dark:text-slate-300 dark:hover:text-white">About</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="theme-toggle-icon" class="fa-solid fa-sun text-lg"></i>
                     </button>
+                    <div id="auth-control" class="flex items-center">
+                        <a id="login-button" href="login.html" class="inline-flex h-10 items-center justify-center rounded-md bg-teal-500 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500">Login</a>
+                    </div>
                 </div>
-                <!-- Mobile menu button -->
-                <div class="flex items-center md:hidden gap-2">
-                    <!-- Theme Toggle Mobile (Visible on mobile next to hamburger) -->
-                    <button id="mobile-theme-toggle-inline" class="p-2 rounded-md text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors" aria-label="Toggle Dark Mode">
+
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="mobile-theme-toggle-inline" class="rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-label="Toggle Dark Mode">
                         <i id="mobile-theme-toggle-icon-inline" class="fa-solid fa-sun text-lg"></i>
                     </button>
-                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
                     </button>
@@ -58,224 +53,107 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
-                <a href="issues.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Browse Issues</a>
-                <a href="report.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">Report Issue</a>
-                <a href="about.html" class="nav-link text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
-                <a href="login.html" class="bg-teal-500 hover:bg-teal-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4 text-center transition-colors">Login</a>
+        <div class="hidden border-t border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 md:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <a href="../index.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Home</a>
+                <a href="issues.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Browse Issues</a>
+                <a href="report.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">Report Issue</a>
+                <a href="about.html" class="nav-link block rounded-md px-3 py-2 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white">About</a>
+                <div id="mobile-auth-control" class="pt-2">
+                    <a id="mobile-login-button" href="login.html" class="block rounded-md bg-teal-500 px-3 py-2 text-center text-base font-medium text-white transition-colors hover:bg-teal-600">Login</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow px-4 py-10 sm:py-16">
-        <div class="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
-
-            <!-- Welcome Section -->
-            <section class="text-center md:text-left">
-                <div class="mb-6">
-                    <img src="https://www.gstatic.com/images/branding/product/2x/maps_96dp.png"
-                         alt="FixMyArea location"
-                         class="mx-auto h-28 w-28 md:mx-0">
+    <main class="max-w-5xl mx-auto px-4 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 text-sm font-medium">
+                    <i class="fa-solid fa-shield-halved mr-2"></i> Demo access portal
                 </div>
-
-                <h1 class="text-3xl font-bold sm:text-4xl text-slate-900 dark:text-white">
-                    Welcome Back!
-                </h1>
-
-                <p class="mx-auto mt-4 max-w-md text-slate-600 dark:text-slate-400 md:mx-0">
-                    Log in to continue reporting and tracking local issues
-                    in your community.
+                <h1 class="text-4xl font-bold text-slate-900 dark:text-white">Sign in to report and manage local issues.</h1>
+                <p class="text-slate-600 dark:text-slate-300 text-lg">
+                    Use the demo user or demo admin credentials to explore the frontend-only authentication flow.
                 </p>
-
-                <div class="mt-8 grid grid-cols-3 gap-3 text-center">
-                    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
-                        <div class="text-2xl">📝</div>
-                        <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                            Report Issues
-                        </p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
-                        <div class="text-2xl">📊</div>
-                        <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                            Track Progress
-                        </p>
-                    </div>
-
-                    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
-                        <div class="text-2xl">🌱</div>
-                        <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                            Better Community
-                        </p>
-                    </div>
+                <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+                    <p class="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Demo credentials</p>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li><strong>User:</strong> demo@fixmyarea.com / demo123</li>
+                        <li><strong>Admin:</strong> admin@fixmyarea.com / admin123</li>
+                    </ul>
                 </div>
-            </section>
+            </div>
 
-            <!-- Login Card -->
-            <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-xl sm:p-8">
-                <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
-                        Login
-                    </h2>
-                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                        Access your account to manage your reports and
-                        location settings.
-                    </p>
+            <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg p-6">
+                <div class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
+                    <button type="button" class="auth-tab flex-1 py-3 text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors" data-target="login-view">User Login</button>
+                    <button type="button" class="auth-tab flex-1 py-3 text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors" data-target="register-view">Register</button>
+                    <button type="button" class="auth-tab flex-1 py-3 text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors" data-target="admin-view">Admin</button>
                 </div>
 
-                <form id="loginForm" novalidate>
-                    <!-- Email -->
-                    <div class="mb-5">
-                        <label for="email"
-                               class="mb-2 block font-medium text-slate-900 dark:text-white">
-                            Email Address
-                            <span class="text-red-500">*</span>
-                        </label>
-
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="Enter your email"
-                            autocomplete="email"
-                            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white px-4 py-3 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-                        >
-
-                        <p id="emailError"
-                           class="mt-2 hidden text-sm text-red-500"
-                           role="alert">
-                            Please enter a valid email address.
-                        </p>
-                    </div>
-
-                    <!-- Password -->
-                    <div class="mb-5">
-                        <label for="password"
-                               class="mb-2 block font-medium text-slate-900 dark:text-white">
-                            Password
-                            <span class="text-red-500">*</span>
-                        </label>
-
-                        <div class="relative">
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                placeholder="Enter your password"
-                                autocomplete="current-password"
-                                class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white px-4 py-3 pr-20 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-                            >
-
-                            <button
-                                type="button"
-                                id="togglePassword"
-                                class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400"
-                            >
-                                Show
-                            </button>
+                <div id="login-view" class="auth-view">
+                    <form id="user-login-form" class="space-y-5" novalidate>
+                        <div>
+                            <label for="user-email" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Email</label>
+                            <input id="user-email" type="email" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="demo@fixmyarea.com">
+                            <p id="user-email-error" class="hidden mt-1 text-sm text-red-500"></p>
                         </div>
-
-                        <p id="passwordError"
-                           class="mt-2 hidden text-sm text-red-500"
-                           role="alert">
-                            Please enter your password.
-                        </p>
-                    </div>
-
-                    <!-- Login Error -->
-                    <div id="loginError"
-                         class="mb-5 hidden rounded-lg border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-500"
-                         role="alert">
-                        Invalid email or password.
-                    </div>
-
-                    <!-- Login Button -->
-                    <button
-                        id="loginButton"
-                        type="submit"
-                        class="w-full rounded-lg bg-teal-500 px-5 py-3 font-semibold text-white transition hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    >
-                        Login →
-                    </button>
-                </form>
-
-                <!-- Demo Credentials -->
-                <div class="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-4">
-                    <h3 class="font-semibold text-teal-600 dark:text-teal-400">
-                        Demo Login
-                    </h3>
-                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                        Email:
-                        <span class="font-medium text-slate-900 dark:text-white">
-                            demo@fixmyarea.com
-                        </span>
-                    </p>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                        Password:
-                        <span class="font-medium text-slate-900 dark:text-white">
-                            demo123
-                        </span>
-                    </p>
+                        <div>
+                            <label for="user-password" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Password</label>
+                            <input id="user-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter password">
+                            <p id="user-password-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">Login</button>
+                        <div id="login-status" class="hidden mt-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-500"></div>
+                    </form>
                 </div>
-            </section>
+
+                <div id="register-view" class="auth-view hidden">
+                    <form id="register-form" class="space-y-5" novalidate>
+                        <div>
+                            <label for="register-full-name" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Full Name</label>
+                            <input id="register-full-name" type="text" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Your full name">
+                            <p id="register-full-name-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
+                            <label for="register-email" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Email</label>
+                            <input id="register-email" type="email" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="you@example.com">
+                            <p id="register-email-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
+                            <label for="register-password" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Password</label>
+                            <input id="register-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="At least 8 characters">
+                            <p id="register-password-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
+                            <label for="confirm-password" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Confirm Password</label>
+                            <input id="confirm-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Confirm password">
+                            <p id="confirm-password-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">Create Account</button>
+                        <div id="register-status" class="hidden mt-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-500"></div>
+                    </form>
+                </div>
+
+                <div id="admin-view" class="auth-view hidden">
+                    <form id="admin-login-form" class="space-y-5" novalidate>
+                        <div>
+                            <label for="admin-email" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Admin Email</label>
+                            <input id="admin-email" type="email" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="admin@fixmyarea.com">
+                            <p id="admin-email-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
+                            <label for="admin-password" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Admin Password</label>
+                            <input id="admin-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Enter admin password">
+                            <p id="admin-password-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">Admin Login</button>
+                        <div id="admin-status" class="hidden mt-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-500"></div>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-100 dark:bg-slate-950 pt-12 pb-8 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Brand Info -->
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-map-location-dot text-teal-500 text-xl"></i>
-                        <span class="font-bold text-lg text-slate-900 dark:text-white">FixMyArea</span>
-                    </div>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">
-                        FixMyArea helps communities identify and report local problems through a simple digital platform.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Home</a></li>
-                        <li><a href="issues.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Browse Issues</a></li>
-                        <li><a href="report.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Report Issue</a></li>
-                        <li><a href="about.html" class="text-slate-600 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">About Us</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Placeholder -->
-                <div>
-                    <h3 class="text-slate-900 dark:text-white font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                        <li><i class="fa-solid fa-envelope mr-2 text-slate-500"></i> contact@fixmyarea.com</li>
-                        <li><i class="fa-solid fa-phone mr-2 text-slate-500"></i> +91 (123) 456-7890</li>
-                        <li><i class="fa-solid fa-location-dot mr-2 text-slate-500"></i> Chennai, Tamil Nadu</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center transition-colors duration-300">
-                <p class="text-slate-500 text-sm mb-4 md:mb-0">
-                    &copy; <span id="current-year"></span> FixMyArea. All rights reserved.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Custom JS -->
-    <script src="../js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "USR001",
+      "fullName": "Demo User",
+      "email": "demo@fixmyarea.com",
+      "password": "demo123",
+      "role": "user"
+    },
+    {
+      "id": "USR002",
+      "fullName": "Test User",
+      "email": "testuser@example.com",
+      "password": "test1234",
+      "phone": "9876543210",
+      "city": "Chennai",
+      "area": "Sholinganallur",
+      "latitude": 12.9,
+      "longitude": 80.2,
+      "locationMethod": "gps",
+      "role": "user",
+      "createdAt": "2026-09-19T03:23:18.400Z"
+    }
+  ],
+  "admins": [
+    {
+      "id": "ADM001",
+      "fullName": "Demo Administrator",
+      "email": "admin@fixmyarea.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ]
+}

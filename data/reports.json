@@ -1,0 +1,28 @@
+[
+  {
+    "id": "FM-2026-101",
+    "title": "Large pothole near main road",
+    "category": "Road Damage",
+    "city": "Trichy",
+    "area": "Srirangam",
+    "location": "Srirangam, Trichy",
+    "description": "A deep pothole is damaging vehicles and making pedestrian movement unsafe.",
+    "status": "Reported",
+    "date": "2026-09-19",
+    "image": "",
+    "createdAt": "2026-09-19T00:00:00.000Z"
+  },
+  {
+    "id": "FM-2026-102",
+    "title": "Garbage overflow near bus stop",
+    "category": "Garbage and Waste",
+    "city": "Chennai",
+    "area": "Anna Nagar",
+    "location": "Anna Nagar, Chennai",
+    "description": "Garbage has been piling up near the local bus stop and is spreading odor.",
+    "status": "In Progress",
+    "date": "2026-09-18",
+    "image": "",
+    "createdAt": "2026-09-18T00:00:00.000Z"
+  }
+]

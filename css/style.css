@@ -1,0 +1,25 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.issue-card {
+    min-width: 0;
+}
+
+.issue-image-wrap {
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+}
+
+.issue-image {
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .issue-card .issue-image {
+        height: 220px;
+    }
+}
