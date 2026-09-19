@@ -161,7 +161,7 @@ function updateFileConnectionStatus(message, connected = false) {
 function updateRegisterAvailability() {
     const submitButton = document.getElementById('register-submit-button');
     const formFields = document.querySelectorAll('#register-form input, #register-form select');
-    const isEnabled = Boolean(state.fileHandle);
+    const isEnabled = true;
 
     if (submitButton) {
         submitButton.disabled = !isEnabled;
@@ -365,12 +365,12 @@ function validateRegistrationForm() {
     const status = document.getElementById('register-status');
 
     let isValid = true;
-    const fullName = (fullNameInput.value || '').trim();
-    const email = (emailInput.value || '').trim();
-    const password = passwordInput.value || '';
-    const confirmPassword = confirmPasswordInput.value || '';
-    const city = cityInput.value || '';
-    const area = areaInput.value || '';
+    const fullName = (fullNameInput?.value || '').trim();
+    const email = (emailInput?.value || '').trim();
+    const password = passwordInput?.value || '';
+    const confirmPassword = confirmPasswordInput?.value || '';
+    const city = cityInput?.value || '';
+    const area = areaInput?.value || '';
 
     if (!fullName) {
         setFieldError(fullNameInput, fullNameError, 'Full name is required.');
@@ -400,17 +400,17 @@ function validateRegistrationForm() {
         clearFieldError(confirmPasswordInput, confirmPasswordError);
     }
 
-    if (!city) {
+    if (cityInput && !city) {
         setFieldError(cityInput, cityError, 'Please select a city.');
         isValid = false;
-    } else {
+    } else if (cityInput) {
         clearFieldError(cityInput, cityError);
     }
 
-    if (!area) {
+    if (areaInput && !area) {
         setFieldError(areaInput, areaError, 'Please select an area.');
         isValid = false;
-    } else {
+    } else if (areaInput) {
         clearFieldError(areaInput, areaError);
     }
 
@@ -438,9 +438,9 @@ async function handleUserRegistration(event) {
 
     const fullName = document.getElementById('register-full-name').value.trim();
     const email = document.getElementById('register-email').value.trim().toLowerCase();
-    const phone = document.getElementById('register-phone').value.trim();
-    const city = document.getElementById('register-city').value;
-    const area = document.getElementById('register-area').value;
+    const phone = document.getElementById('register-phone')?.value.trim() || '';
+    const city = document.getElementById('register-city')?.value || '';
+    const area = document.getElementById('register-area')?.value || '';
     const password = document.getElementById('register-password').value;
 
     try {

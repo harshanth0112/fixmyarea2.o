@@ -122,6 +122,24 @@
                             <p id="register-email-error" class="hidden mt-1 text-sm text-red-500"></p>
                         </div>
                         <div>
+                            <label for="register-phone" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Phone</label>
+                            <input id="register-phone" type="tel" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Your phone number">
+                        </div>
+                        <div>
+                            <label for="register-city" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">City</label>
+                            <select id="register-city" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                <option value="">Select city</option>
+                            </select>
+                            <p id="register-city-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
+                            <label for="register-area" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Area</label>
+                            <select id="register-area" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" disabled>
+                                <option value="">Select area</option>
+                            </select>
+                            <p id="register-area-error" class="hidden mt-1 text-sm text-red-500"></p>
+                        </div>
+                        <div>
                             <label for="register-password" class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Password</label>
                             <input id="register-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="At least 8 characters">
                             <p id="register-password-error" class="hidden mt-1 text-sm text-red-500"></p>
@@ -131,7 +149,11 @@
                             <input id="confirm-password" type="password" class="w-full border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2.5 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Confirm password">
                             <p id="confirm-password-error" class="hidden mt-1 text-sm text-red-500"></p>
                         </div>
-                        <button type="submit" class="w-full bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">Create Account</button>
+                        <div class="flex items-center gap-3">
+                            <button type="button" id="get-location-button" class="flex-1 rounded-lg border border-teal-500 text-teal-600 hover:bg-teal-50 dark:hover:bg-slate-700 px-3 py-2.5 text-sm font-semibold transition-colors">Use my location</button>
+                        </div>
+                        <p id="location-status" class="hidden text-sm text-slate-600 dark:text-slate-300"></p>
+                        <button id="register-submit-button" type="submit" class="w-full bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors">Create Account</button>
                         <div id="register-status" class="hidden mt-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-500"></div>
                     </form>
                 </div>
